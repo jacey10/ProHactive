@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProHactive | Own Your Day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --navy:   #0f2338;
+      --navy-mid: #1a3450;
+      --navy-light: #254264;
+      --gold:   #e8a83e;
+      --gold-pale: #f3c97a;
+      --gold-dim: #c08828;
+      --cream:  #faf7f2;
+      --white:  #ffffff;
+      --text-body: #b8c8d8;
+      --text-muted: #6b8099;
+
+      --radius: 4px;
+      --radius-lg: 12px;
+      --transition: 0.25s cubic-bezier(.4,0,.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--text-body);
+      overflow-x: hidden;
+    }
+
+    /* ── Grain overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.6;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(15, 35, 56, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(232,168,62,.12);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    /* Inline P logo mark */
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .nav-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-brand span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-body);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: var(--radius);
+      font-weight: 600 !important;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-pale) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding: 10rem 3rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background geometric lines */
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -8%;
+      top: 5%;
+      width: 60%;
+      height: 90%;
+      border: 1px solid rgba(232,168,62,.06);
+      border-radius: var(--radius-lg);
+      transform: rotate(6deg);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.1s forwards;
+    }
+
+    .eyebrow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s forwards;
+    }
+
+    .hero-title .accent {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--text-body);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.35s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.5s forwards;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 0 0 0 rgba(232,168,62,0);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-pale);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(232,168,62,0.25);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ── App Preview ── */
+    .hero-visual {
+      position: relative;
+      opacity: 0;
+      animation: fadeLeft 0.9s 0.45s forwards;
+    }
+
+    .app-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(232,168,62,.15);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(232,168,62,.05);
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .app-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .progress-ring {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .ring {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 3px solid rgba(232,168,62,.2);
+      border-top-color: var(--gold);
+      animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Time blocks */
+    .time-blocks { display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .block {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 0.9rem;
+      border-radius: var(--radius);
+      border-left: 3px solid transparent;
+      transition: background var(--transition);
+      cursor: default;
+    }
+
+    .block:hover { background: rgba(255,255,255,.03); }
+
+    .block-time {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .block-info { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .block-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .block-tag {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .priority {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Priority colors */
+    .p-high   { background: #e05b5b; box-shadow: 0 0 8px #e05b5b66; }
+    .p-mid    { background: var(--gold); box-shadow: 0 0 8px rgba(232,168,62,.5); }
+    .p-low    { background: #4db89c; box-shadow: 0 0 8px #4db89c55; }
+
+    /* Active block */
+    .block-active {
+      background: rgba(232,168,62,.06);
+      border-left-color: var(--gold);
+    }
+
+    .block-done { opacity: 0.45; }
+    .block-done .block-title { text-decoration: line-through; }
+
+    /* Notification pill */
+    .notif-pill {
+      position: absolute;
+      top: -18px;
+      right: 2rem;
+      background: var(--navy-light);
+      border: 1px solid rgba(232,168,62,.3);
+      border-radius: 99px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+      animation: floatBob 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 3rem;
+      margin: 0 0 5rem;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(232,168,62,.2), transparent);
+    }
+
+    .divider-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── Features ── */
+    .features {
+      padding: 0 3rem 6rem;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title em { color: var(--gold); font-style: italic; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(232,168,62,.08);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .feature-card {
+      background: var(--navy);
+      padding: 2.5rem 2rem;
+      transition: background var(--transition);
+      position: relative;
+    }
+
+    .feature-card:hover { background: var(--navy-mid); }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .feature-card:hover::before { opacity: 1; }
+
+    .feature-icon {
+      width: 44px; height: 44px;
+      border: 1px solid rgba(232,168,62,.25);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.2rem;
+    }
+
+    .feature-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-desc {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* ── Stats strip ── */
+    .stats {
+      padding: 4rem 3rem;
+      border-top: 1px solid rgba(232,168,62,.1);
+      border-bottom: 1px solid rgba(232,168,62,.1);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 6rem;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* ── Pricing ── */
+    .pricing {
+      padding: 0 3rem 6rem;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .price-card {
+      border: 1px solid rgba(232,168,62,.12);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      background: var(--navy-mid);
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px rgba(0,0,0,.4);
+    }
+
+    .price-card.featured {
+      border-color: var(--gold);
+      background: var(--navy-light);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 99px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .plan-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .plan-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .plan-price sup { font-size: 1.2rem; vertical-align: top; margin-top: 0.5rem; display: inline-block; }
+    .plan-price sub { font-size: 0.9rem; color: var(--text-muted); font-family: 'DM Sans', sans-serif; }
+
+    .plan-features {
+      list-style: none;
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .plan-features li {
+      font-size: 0.85rem;
+      color: var(--text-body);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .plan-features li::before {
+      content: '—';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+      margin: 0 3rem 6rem;
+      background: var(--navy-mid);
+      border: 1px solid rgba(232,168,62,.2);
+      border-radius: var(--radius-lg);
+      padding: 4rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .cta-banner h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-banner p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(232,168,62,.1);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(32px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Scroll reveals */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; }
+      .hero::after { display: none; }
+      .hero-visual { order: -1; }
+      .features-grid, .pricing-cards { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .features, .pricing, .cta-banner { margin: 0 1.5rem 4rem; padding: 0; }
+      .cta-banner { margin: 0 1.5rem 4rem; padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <svg class="logo-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="100" rx="8" fill="#0f2338"/>
+        <rect x="26" y="14" width="16" height="72" fill="#e8a83e"/>
+        <path d="M42 14 C80 14 88 50 42 52" stroke="#0f2338" stroke-width="7" fill="none"/>
+        <path d="M42 14 C78 14 86 50 42 52" stroke="#e8a83e" stroke-width="2" fill="none"/>
+        <!-- Horizontal lines -->
+        <line x1="42" y1="30" x2="70" y2="30" stroke="#0f2338" stroke-width="7"/>
+        <line x1="42" y1="41" x2="68" y2="41" stroke="#0f2338" stroke-width="7"/>
+        <line x1="42" y1="52" x2="58" y2="52" stroke="#0f2338" stroke-width="7"/>
+      </svg>
+      <span class="nav-brand">Pro<span>H</span>active</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        Daily Schedule Manager
+      </div>
+      <h1 class="hero-title">
+        Own your day.<br/>
+        Block by <span class="accent">block.</span>
+      </h1>
+      <p class="hero-sub">
+        ProHactive keeps you on track with intelligent time blocks, priority levels, and smart notifications — so nothing slips through the cracks.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary">Start for free →</button>
+        <button class="btn-ghost">Watch demo</button>
+      </div>
+    </div>
+
+    <!-- App preview -->
+    <div class="hero-visual">
+      <div class="notif-pill">
+        🔔 Deep work block starting in 5 min
+      </div>
+      <div class="app-card">
+        <div class="app-header">
+          <div class="app-date">Wed · 27 May 2026</div>
+          <div class="progress-ring">
+            <div class="ring"></div>
+            5 / 8 done
+          </div>
+        </div>
+
+        <div class="time-blocks">
+          <div class="block block-done">
+            <div class="block-time">06:00<br/>07:00</div>
+            <div class="block-info">
+              <div class="block-title">Morning review</div>
+              <div class="block-tag">Planning</div>
+            </div>
+            <div class="priority p-low"></div>
+          </div>
+
+          <div class="block block-done">
+            <div class="block-time">08:00<br/>10:00</div>
+            <div class="block-info">
+              <div class="block-title">Client proposal draft</div>
+              <div class="block-tag">Work · Deep</div>
+            </div>
+            <div class="priority p-high"></div>
+          </div>
+
+          <div class="block block-active">
+            <div class="block-time">10:30<br/>12:30</div>
+            <div class="block-info">
+              <div class="block-title">React components</div>
+              <div class="block-tag">Dev · Active now</div>
+            </div>
+            <div class="priority p-high"></div>
+          </div>
+
+          <div class="block">
+            <div class="block-time">13:00<br/>14:00</div>
+            <div class="block-info">
+              <div class="block-title">Lunch + walk</div>
+              <div class="block-tag">Recovery</div>
+            </div>
+            <div class="priority p-low"></div>
+          </div>
+
+          <div class="block">
+            <div class="block-time">15:00<br/>17:00</div>
+            <div class="block-info">
+              <div class="block-title">Portfolio updates</div>
+              <div class="block-tag">Creative</div>
+            </div>
+            <div class="priority p-mid"></div>
+          </div>
+
+          <div class="block">
+            <div class="block-time">18:00<br/>19:00</div>
+            <div class="block-info">
+              <div class="block-title">Tutor session · Maths</div>
+              <div class="block-tag">Teaching</div>
+            </div>
+            <div class="priority p-mid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="section-divider">
+    <div class="divider-line"></div>
+    <span class="divider-label">Why ProHactive</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Features -->
+  <section class="features reveal" id="features">
+    <div class="section-label">Core features</div>
+    <h2 class="section-title">
+      Structure that <em>actually</em><br/>works with you
+    </h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⏱</div>
+        <div class="feature-name">Smart Time Blocks</div>
+        <p class="feature-desc">Drag-and-drop scheduling with intelligent duration suggestions based on your historical completion data.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-name">Priority Levels</div>
+        <p class="feature-desc">Three-tier priority system (high / mid / low) with colour-coded visual hierarchy so the critical stuff is always obvious.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <div class="feature-name">Smart Notifications</div>
+        <p class="feature-desc">Context-aware reminders that account for travel time, prep work, and your personal focus rhythms.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-name">Progress Insights</div>
+        <p class="feature-desc">Daily and weekly completion analytics so you understand where your time actually goes — not where you think it goes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <div class="feature-name">Recurring Blocks</div>
+        <p class="feature-desc">Build consistent routines with intelligent recurring blocks that adapt when your schedule changes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <div class="feature-name">Any Device</div>
+        <p class="feature-desc">Full-featured web app with offline support and cross-device sync. Your schedule is always with you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats reveal">
+    <div class="stat-item">
+      <div class="stat-num">83%</div>
+      <div class="stat-label">Task completion rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2.4×</div>
+      <div class="stat-label">Focus time increase</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12k+</div>
+      <div class="stat-label">Active users</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4.9</div>
+      <div class="stat-label">Average rating</div>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <section class="pricing reveal" id="pricing">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Simple, <em>transparent</em> plans</h2>
+
+    <div class="pricing-cards">
+      <div class="price-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-desc">Perfect to get started</div>
+        <div class="plan-price"><sup>$</sup>0<sub>/mo</sub></div>
+        <ul class="plan-features">
+          <li>Up to 5 blocks per day</li>
+          <li>Basic priority levels</li>
+          <li>Email notifications</li>
+          <li>7-day history</li>
+        </ul>
+        <button class="btn-ghost" style="width:100%">Get started</button>
+      </div>
+
+      <div class="price-card featured">
+        <div class="featured-badge">Most Popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-desc">For serious schedulers</div>
+        <div class="plan-price"><sup>$</sup>9<sub>/mo</sub></div>
+        <ul class="plan-features">
+          <li>Unlimited blocks</li>
+          <li>Smart notifications</li>
+          <li>Progress insights</li>
+          <li>Recurring blocks</li>
+          <li>90-day history</li>
+        </ul>
+        <button class="btn-primary" style="width:100%">Start free trial →</button>
+      </div>
+
+      <div class="price-card">
+        <div class="plan-name">Team</div>
+        <div class="plan-desc">Built for collaborative teams</div>
+        <div class="plan-price"><sup>$</sup>24<sub>/mo</sub></div>
+        <ul class="plan-features">
+          <li>Everything in Pro</li>
+          <li>Up to 10 members</li>
+          <li>Shared team calendar</li>
+          <li>Admin controls</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn-ghost" style="width:100%">Contact sales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <div class="cta-banner reveal">
+    <h2>Ready to take control?</h2>
+    <p>Join thousands of people who've stopped reacting to their day and started owning it.</p>
+    <button class="btn-primary">Get ProHactive — it's free</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 ProHactive. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => io.observe(el));
+
+    // Stagger feature cards on reveal
+    const grid = document.querySelector('.features-grid');
+    if (grid) {
+      const cards = grid.querySelectorAll('.feature-card');
+      cards.forEach((c, i) => {
+        c.style.transitionDelay = `${i * 0.06}s`;
+        c.classList.add('reveal');
+        io.observe(c);
+      });
+    }
+  </script>
+</body>
+</html>
