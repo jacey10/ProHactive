@@ -484,6 +484,469 @@
       font-weight: 300;
     }
 
+      /* How It Works Section */
+  .how-it-works {
+    padding: 5rem 1.5rem;
+    background: linear-gradient(180deg, #0a0e27 0%, #0d1226 100%);
+    color: #fff;
+  }
+
+  .how-it-works .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #fff;
+  }
+
+  .section-header .highlight {
+    color: #f59e0b;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Process Steps */
+  .process-steps {
+    display: grid;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .step {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .step-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .step-time .sun-icon,
+  .step-time .bell-icon,
+  .step-time .moon-icon {
+    font-size: 1.25rem;
+  }
+
+  .step-time .time {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f59e0b;
+  }
+
+  .step h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+
+  .step-desc {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  /* Step Visuals */
+  .step-visual {
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Mobile Schedule */
+  .mobile-schedule {
+    text-align: left;
+  }
+
+  .schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .schedule-header span:first-child {
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .schedule-header .date {
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+
+  .schedule-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .schedule-item:last-child {
+    border-bottom: none;
+  }
+
+  .item-time {
+    font-size: 0.75rem;
+    color: #f59e0b;
+    min-width: 40px;
+  }
+
+  .item-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .item-title {
+    font-size: 0.875rem;
+    color: #e2e8f0;
+    font-weight: 500;
+  }
+
+  .item-tag {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .item-tag.high {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+  }
+
+  .item-tag.medium {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+  }
+
+  .item-tag.recovery {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+  }
+
+  /* Notification Card */
+  .notification-card {
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 0.5rem;
+    padding: 0.875rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid #f59e0b;
+  }
+
+  .notif-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .notif-icon {
+    width: 28px;
+    height: 28px;
+    background: #f59e0b;
+    color: #0a0e27;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+  }
+
+  .notif-app {
+    flex: 1;
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.875rem;
+  }
+
+  .notif-time {
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+
+  .notif-content strong {
+    display: block;
+    color: #fff;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .notif-content p {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  .clock-display {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .clock-time {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .clock-date {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  /* Summary Card */
+  .summary-card {
+    text-align: left;
+  }
+
+  .summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .summary-header > span {
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.875rem;
+  }
+
+  .share-btn {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .summary-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .stat:last-of-type {
+    border-bottom: none;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+  }
+
+  .stat-value {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .stat-value.success {
+    color: #34d399;
+  }
+
+  .stat-value.highlight {
+    color: #f59e0b;
+  }
+
+  .stat-value.warning {
+    color: #f87171;
+  }
+
+  .stat-icon {
+    margin-left: 0.5rem;
+    opacity: 0.5;
+  }
+
+  .summary-quote {
+    margin-top: 1rem;
+    padding: 0.875rem;
+    background: rgba(245, 158, 11, 0.1);
+    border-left: 3px solid #f59e0b;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+
+  .summary-quote p {
+    font-size: 0.75rem;
+    color: #cbd5e1;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .step-footer {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+
+  .step-number {
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 28px;
+    background: #f59e0b;
+    color: #0a0e27;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    border: 3px solid #0d1226;
+  }
+
+  /* Bottom Features */
+  .bottom-features {
+    display: grid;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .bottom-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .feature-text h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+
+  .feature-text p {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  /* Tablet and Up */
+  @media (min-width: 768px) {
+    .how-it-works {
+      padding: 6rem 2rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+    }
+
+    .process-steps {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .step {
+      padding: 2rem;
+    }
+
+    .step h3 {
+      font-size: 1.5rem;
+    }
+
+    .step-desc {
+      font-size: 1rem;
+    }
+
+    .bottom-features {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .bottom-feature {
+      gap: 1.25rem;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+    }
+
+    .feature-text h4 {
+      font-size: 1rem;
+    }
+
+    .feature-text p {
+      font-size: 0.875rem;
+    }
+  }
+
+    /* Desktop */
+    @media (min-width: 1024px) {
+      .how-it-works {
+        padding: 8rem 3rem;
+      }
+
+      .section-header h2 {
+        font-size: 3rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.25rem;
+      }
+
+      .bottom-features {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
     /* ── Stats strip ── */
     .stats {
       padding: 4rem 3rem;
@@ -876,6 +1339,166 @@
       </div>
     </div>
   </section>
+
+  <!-- How It Works Section -->
+<section id="how-it-works" class="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <h2>One plan. One day. <span class="highlight">Less chaos.</span></h2>
+      <p class="section-subtitle">Plan your day, stay on track with smart reminders, and end with clarity.</p>
+    </div>
+
+    <!-- Three Step Process -->
+    <div class="process-steps">
+      <!-- Step 1 -->
+      <div class="step">
+        <div class="step-time">
+          <span class="sun-icon">☀️</span>
+          <span class="time">08:00</span>
+        </div>
+        <h3>Plan with purpose</h3>
+        <p class="step-desc">Time-block your day in minutes. Set priorities. See your day clearly.</p>
+        <div class="step-visual step-visual-1">
+          <div class="mobile-schedule">
+            <div class="schedule-header">
+              <span>Today</span>
+              <span class="date">Wed, 27 May 2026</span>
+            </div>
+            <div class="schedule-item">
+              <span class="item-time">08:00</span>
+              <div class="item-content">
+                <span class="item-title">Deep work</span>
+                <span class="item-tag high">HIGH</span>
+              </div>
+            </div>
+            <div class="schedule-item">
+              <span class="item-time">10:00</span>
+              <div class="item-content">
+                <span class="item-title">Client proposal draft</span>
+                <span class="item-tag medium">MEDIUM</span>
+              </div>
+            </div>
+            <div class="schedule-item">
+              <span class="item-time">12:00</span>
+              <div class="item-content">
+                <span class="item-title">Lunch + walk</span>
+                <span class="item-tag recovery">RECOVERY</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="step-footer">Plan once in the morning. Take control of your time.</p>
+        <div class="step-number">1</div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step">
+        <div class="step-time">
+          <span class="bell-icon">🔔</span>
+          <span class="time">10:00</span>
+        </div>
+        <h3>Stay on track</h3>
+        <p class="step-desc">Smart notifications nudge you at the right time.</p>
+        <div class="step-visual step-visual-2">
+          <div class="notification-card">
+            <div class="notif-header">
+              <span class="notif-icon">P</span>
+              <span class="notif-app">ProHactive</span>
+              <span class="notif-time">10:00 AM</span>
+            </div>
+            <div class="notif-content">
+              <strong>Deep work starts in 10 minutes</strong>
+              <p>Your block is from 10:00 - 11:30 AM</p>
+            </div>
+          </div>
+          <div class="clock-display">
+            <span class="clock-time">10:00</span>
+            <span class="clock-date">Wednesday, 27 May</span>
+          </div>
+        </div>
+        <p class="step-footer">Gentle reminders keep you aligned so you can focus on what matters.</p>
+        <div class="step-number">2</div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step">
+        <div class="step-time">
+          <span class="moon-icon">🌙</span>
+          <span class="time">18:30</span>
+        </div>
+        <h3>End with clarity</h3>
+        <p class="step-desc">See your progress. Reflect. Get better every day.</p>
+        <div class="step-visual step-visual-3">
+          <div class="summary-card">
+            <div class="summary-header">
+              <span>End of Day Summary</span>
+              <button class="share-btn">↗</button>
+            </div>
+            <div class="summary-stats">
+              <div class="stat">
+                <span class="stat-label">Tasks completed</span>
+                <span class="stat-value success">7 / 9</span>
+                <span class="stat-icon">✓</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Focus time</span>
+                <span class="stat-value highlight">5h 20m</span>
+                <span class="stat-icon">🕐</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Completion rate</span>
+                <span class="stat-value">78%</span>
+                <span class="stat-icon">📈</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Top priority done</span>
+                <span class="stat-value warning">4 / 5</span>
+                <span class="stat-icon">🎯</span>
+              </div>
+            </div>
+            <div class="summary-quote">
+              <p>"Small steps today. Big progress tomorrow."</p>
+            </div>
+          </div>
+        </div>
+        <p class="step-footer">Close the day with a clear summary and a sense of accomplishment.</p>
+        <div class="step-number">3</div>
+      </div>
+    </div>
+
+    <!-- Bottom Features -->
+    <div class="bottom-features">
+      <div class="bottom-feature">
+        <span class="feature-icon shield">🛡️</span>
+        <div class="feature-text">
+          <h4>Your data is private</h4>
+          <p>Stored locally. You're in control.</p>
+        </div>
+      </div>
+      <div class="bottom-feature">
+        <span class="feature-icon bolt">⚡</span>
+        <div class="feature-text">
+          <h4>Works offline</h4>
+          <p>Your schedule is always with you.</p>
+        </div>
+      </div>
+      <div class="bottom-feature">
+        <span class="feature-icon device">📱</span>
+        <div class="feature-text">
+          <h4>Any device</h4>
+          <p>Seamless across all your devices.</p>
+        </div>
+      </div>
+      <div class="bottom-feature">
+        <span class="feature-icon check">✓</span>
+        <div class="feature-text">
+          <h4>Built for individuals</h4>
+          <p>Designed for focus, not noise.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Stats -->
   <div class="stats reveal">
