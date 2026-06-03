@@ -83,7 +83,8 @@ nav {
   list-style: none;
 }
 
-.nav-links a {
+.nav-link {
+  position: relative;
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
@@ -93,7 +94,27 @@ nav {
   transition: color var(--transition);
 }
 
-.nav-links a:hover { color: var(--gold); }
+.nav-link:hover, .nav-link.active {
+  color: var(--white);
+}
+
+.nav-link::after {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  height: 3px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: width 0.2s;
+  width: 100%;
+}
+
+.nav-link.active::after {
+  transform: scaleX(1);
+}
 
 .nav-cta {
   background: var(--gold);
