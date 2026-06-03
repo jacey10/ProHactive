@@ -1265,8 +1265,13 @@ footer p {
 @media (max-width: 400px) {
   .hero-actions {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
   }
+
+  .btn-primary, .btn-ghost {
+    align-items: stretch;
+    width: 100%;
+  }
+    
 }
