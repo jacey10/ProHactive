@@ -1,110 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ProHactive | Own Your Day</title>
-        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProHactive | Own Your Day</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
+  </head>
 
-    <body>
+  <body>
 
-        <!-- HEADER -->
-        <header>
-            <div class="logo">Pro<span>H</span>active</div>
-            <nav>
-                <a href="landingpage.html">Features</a>
-                <a href="#">How it works</a>
-                <a href="#">Pricing</a>
-            </nav>
-            <button class="header-cta">Get started</button>
-        </header>
+    <!-- Nav -->
+    <nav>
+      <a href="#" class="nav-logo">
+        <svg class="logo-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100" height="100" rx="8" fill="#0f2338"/>
+          <rect x="26" y="14" width="16" height="72" fill="#d4a373"/>
+          <path d="M42 14 C80 14 88 50 42 52" stroke="#0f2338" stroke-width="7" fill="none"/>
+          <path d="M42 14 C78 14 86 50 42 52" stroke="#e8a83e" stroke-width="2" fill="none"/>
+          <!-- Horizontal lines -->
+          <line x1="42" y1="30" x2="70" y2="30" stroke="#0f2338" stroke-width="7"/>
+          <line x1="42" y1="41" x2="68" y2="41" stroke="#0f2338" stroke-width="7"/>
+          <line x1="42" y1="52" x2="58" y2="52" stroke="#0f2338" stroke-width="7"/>
+        </svg>
+        <span class="nav-brand">Pro<span>H</span>active</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+      <a href="#" class="nav-cta">Get Started</a>
+    </nav>
 
-        <!-- HERO -->
-        <section class="hero">
-            <div class="hero-left">
-                <div class="badge">
-                    <span class="badge-dot"></span>
-                    Daily schedule manager
-                </div>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          Daily Schedule Manager
+        </div>
+        <h1 class="hero-title">
+          Own your day.<br/>
+          Block by <span class="accent">block.</span>
+        </h1>
+        <p class="hero-sub">
+          ProHactive keeps you on track with intelligent time blocks, priority levels, and smart notifications — so nothing slips through the cracks.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary">Start for free →</button>
+          <button class="btn-ghost">Watch demo</button>
+        </div>
+      </div>
 
-                <h1>Run Your Day<br><em>Like a System.</em></h1>
+      <!-- App preview -->
+      <div class="hero-visual">
+        <div class="notif-pill">
+          🔔 Deep work block starting in 5 min
+        </div>
+        <div class="app-card">
+          <div class="app-header">
+            <div class="app-date">Wed · 27 May 2026</div>
+            <div class="progress-ring">
+              <div class="ring"></div>
+              5 / 8 done
+            </div>
+          </div>
 
-                <p class="subheadline">Built for people who actually want to get things done. Time-blocked tasks, priority levels, and smart nudges — all in one place.</p>
-
-                <div class="cta-group">
-                    <button class="btn-primary">Start for free</button>
-                    <button class="btn-secondary">See how it works</button>
-                </div>
-
-                <p class="trial-note"><span>✓</span> 30-day free trial &nbsp;·&nbsp; No credit card required</p>
+          <div class="time-blocks">
+            <div class="block block-done">
+              <div class="block-time">06:00<br/>07:00</div>
+              <div class="block-info">
+                <div class="block-title">Morning review</div>
+                <div class="block-tag">Planning</div>
+              </div>
+              <div class="priority p-low"></div>
             </div>
 
-            <div class="hero-right">
-                <div class="phone-frame">
-                    <div class="phone-notch"></div>
-
-                    <div class="app-header">
-                        <div>
-                            <div class="app-date">Tuesday, May 26</div>
-                            <div class="app-title">Today's Schedule</div>
-                        </div>
-                        <div class="add-btn">+</div>
-                    </div>
-
-                    <div class="task-list">
-                        <div class="task-card done low">
-                            <div class="task-check">✓</div>
-                            <div class="task-info">
-                                <div class="task-name">Morning review</div>
-                                <div class="task-time">7:00 – 7:30 AM</div>
-                            </div>
-                            <div class="priority-pill">Low</div>
-                        </div>
-
-                        <div class="task-card high">
-                            <div class="task-check"></div>
-                            <div class="task-info">
-                                <div class="task-name">ProHactive hero section</div>
-                                <div class="task-time">9:00 – 11:00 AM</div>
-                            </div>
-                            <div class="priority-pill">High</div>
-                        </div>
-
-                        <div class="task-card med">
-                            <div class="task-check"></div>
-                            <div class="task-info">
-                                <div class="task-name">Client follow-up email</div>
-                                <div class="task-time">11:30 AM – 12:00 PM</div>
-                            </div>
-                            <div class="priority-pill">Med</div>
-                        </div>
-
-                        <div class="task-card low">
-                            <div class="task-check"></div>
-                            <div class="task-info">
-                                <div class="task-name">React module — Hooks</div>
-                                <div class="task-time">2:00 – 4:00 PM</div>
-                            </div>
-                            <div class="priority-pill">Low</div>
-                        </div>
-                    </div>
-
-                    <div class="app-footer">
-                        <span class="footer-label">Completed today</span>
-                        <span class="footer-val">1 / 4</span>
-                    </div>
-                </div>
-
-                <!-- floating alarm notification -->
-                <div class="alarm-card">
-                    <div class="alarm-label">🔔 Coming up</div>
-                    <div class="alarm-task">ProHactive hero section</div>
-                    <div class="alarm-time">Starts in 10 minutes</div>
-                </div>
+            <div class="block block-done">
+              <div class="block-time">08:00<br/>10:00</div>
+              <div class="block-info">
+                <div class="block-title">Client proposal draft</div>
+                <div class="block-tag">Work · Deep</div>
+              </div>
+              <div class="priority p-high"></div>
             </div>
-        </section>
 
-    </body>
+            <div class="block block-active">
+              <div class="block-time">10:30<br/>12:30</div>
+              <div class="block-info">
+                <div class="block-title">React components</div>
+                <div class="block-tag">Dev · Active now</div>
+              </div>
+              <div class="priority p-high"></div>
+            </div>
+
+            <div class="block">
+              <div class="block-time">13:00<br/>14:00</div>
+              <div class="block-info">
+                <div class="block-title">Lunch + walk</div>
+                <div class="block-tag">Recovery</div>
+              </div>
+              <div class="priority p-low"></div>
+            </div>
+
+            <div class="block">
+              <div class="block-time">15:00<br/>17:00</div>
+              <div class="block-info">
+                <div class="block-title">Portfolio updates</div>
+                <div class="block-tag">Creative</div>
+              </div>
+              <div class="priority p-mid"></div>
+            </div>
+
+            <div class="block">
+              <div class="block-time">18:00<br/>19:00</div>
+              <div class="block-info">
+                <div class="block-title">Tutor session · Maths</div>
+                <div class="block-tag">Teaching</div>
+              </div>
+              <div class="priority p-mid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <span class="divider-label">Why ProHactive</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Features -->
+    <section class="features reveal" id="features">
+      <div class="section-label">Core features</div>
+      <h2 class="section-title">
+        Structure that <em>actually</em> works with you
+      </h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⏱</div>
+          <div class="feature-name">Smart Time Blocks</div>
+          <p class="feature-desc">Drag-and-drop scheduling with intelligent duration suggestions based on your historical completion data.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-name">Priority Levels</div>
+          <p class="feature-desc">Three-tier priority system (high / mid / low) with colour-coded visual hierarchy so the critical stuff is always obvious.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <div class="feature-name">Smart Notifications</div>
+          <p class="feature-desc">Context-aware reminders that account for travel time, prep work, and your personal focus rhythms.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-name">Progress Insights</div>
+          <p class="feature-desc">Daily and weekly completion analytics so you understand where your time actually goes — not where you think it goes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <div class="feature-name">Recurring Blocks</div>
+          <p class="feature-desc">Build consistent routines with intelligent recurring blocks that adapt when your schedule changes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <div class="feature-name">Any Device</div>
+          <p class="feature-desc">Full-featured web app with offline support and cross-device sync. Your schedule is always with you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works reveal">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-label reveal">MY PROHACTIVE DAY</div>
+          <h2 class="section-title reveal">One plan. One day. <em>Less chaos.</em></h2>
+        </div>
+
+        <div class="process-steps">
+          
+          <!-- Step 1: Plan -->
+          <div class="step reveal">
+            <div class="step-header">
+              <div class="icon-time">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                <span class="time">08:00</span>
+              </div>
+              <h3>Plan with purpose</h3>
+              <p class="step-desc">Time-block your day in minutes. Set priorities. See your day clearly.</p>
+            </div>
+
+            <div class="phone-mockup">
+              <div class="phone-notch"></div>
+              <div class="phone-screen schedule-screen">
+                <div class="screen-header">
+                  <span class="menu-icon">≡</span>
+                  <span class="header-title">Today ▾</span>
+                  <span class="plus-icon">+</span>
+                </div>
+                <div class="screen-date">Wed, 27 May 2026 <span class="cal-icon">🗓</span></div>
+                
+                <div class="time-block-list">
+                  <div class="time-block">
+                    <div class="block-times">
+                      <span>08:00</span>
+                      <span>09:30</span>
+                    </div>
+                    <div class="block-info">
+                      <span class="block-title">Deep work</span>
+                      <span class="block-cat">PLANNING</span>
+                    </div>
+                    <span class="tag high">HIGH</span>
+                  </div>
+                  
+                  <div class="time-block">
+                    <div class="block-times">
+                      <span>10:00</span>
+                      <span>11:00</span>
+                    </div>
+                    <div class="block-info">
+                      <span class="block-title">Client proposal draft</span>
+                      <span class="block-cat">WORK</span>
+                    </div>
+                    <span class="tag medium">MEDIUM</span>
+                  </div>
+
+                  <div class="time-block">
+                    <div class="block-times">
+                      <span>12:00</span>
+                      <span>13:00</span>
+                    </div>
+                    <div class="block-info">
+                      <span class="block-title">Lunch + walk</span>
+                      <span class="block-cat">RECOVERY</span>
+                    </div>
+                  </div>
+
+                  <div class="time-block">
+                    <div class="block-times">
+                      <span>13:00</span>
+                      <span>14:00</span>
+                    </div>
+                    <div class="block-info">
+                      <span class="block-title">React components</span>
+                      <span class="block-cat">DEV</span>
+                    </div>
+                    <span class="tag high">HIGH</span>
+                  </div>
+
+                  <div class="time-block">
+                    <div class="block-times">
+                      <span>15:30</span>
+                      <span>15:30</span>
+                    </div>
+                    <div class="block-info">
+                      <span class="block-title">Portfolio updates</span>
+                      <span class="block-cat">CREATIVE</span>
+                    </div>
+                    <span class="tag low">LOW</span>
+                  </div>
+
+                  <div class="time-block">
+                    <div class="block-times">
+                      <span>17:00</span>
+                      <span>18:00</span>
+                    </div>
+                    <div class="block-info">
+                      <span class="block-title">Tutor session - Maths</span>
+                      <span class="block-cat">TEACHING</span>
+                    </div>
+                    <span class="tag medium">MEDIUM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-footer">
+              <div class="step-number">1</div>
+              <p>Plan once in the morning.<br>Take control of your time.</p>
+            </div>
+          </div>
+
+          <!-- Step 2: Stay on track -->
+          <div class="step reveal">
+            <div class="step-header">
+              <div class="icon-time">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span class="time">10:00</span>
+              </div>
+              <h3>Stay on track</h3>
+              <p class="step-desc">Smart notifications nudge you at the right time.</p>
+            </div>
+
+            <div class="phone-mockup">
+              <div class="phone-notch"></div>
+              <div class="phone-screen clock-screen">
+                
+                <div class="clock-content">
+                  <div class="planet-arc"></div>
+                  <div class="date">
+                    <span class="big-time">10:00</span>
+                    <span class="big-date">Wednesday, 27 May</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="notif-card">
+              <div class="notif-top">
+                <div class="notif-icon">P</div>
+                <span class="notif-app">Pro<strong>H</strong>active</span>
+                <span class="notif-time">10:00 AM</span>
+              </div>
+              <div class="notif-body">
+                <strong>Deep work starts in 10 minutes</strong>
+                <p>Your block is from 10:00 - 11:30 AM</p>
+              </div>
+              <div class="mock-notif-actions">
+                <button class="mock-btn-dark">Start Session</button>
+                <button class="mock-btn-light">Snooze</button>
+              </div>
+            </div>
+
+            <div class="step-footer">
+              <div class="step-number">2</div>
+              <p>Gentle reminders keep you aligned<br>so you can focus on what matters.</p>
+            </div>
+          </div>
+
+          <!-- Step 3: End with clarity -->
+          <div class="step reveal">
+            <div class="step-header">
+              <div class="icon-time">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <span class="time">18:30</span>
+              </div>
+              <h3>End with clarity</h3>
+              <p class="step-desc">See your progress. Reflect.<br>Get better every day.</p>
+            </div>
+
+            <div class="phone-mockup">
+              <div class="phone-notch"></div>
+              <div class="phone-screen summary-screen">
+                <div class="summary-header">
+                  <span>End of Day Summary</span>
+                  <button class="share-btn">⬆</button>
+                </div>
+                
+                <div class="summary-list">
+                  <div class="summary-row">
+                    <span class="s-label">Tasks completed</span>
+                    <span class="s-val gold">7 / 9</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="s-label">Focus time</span>
+                    <span class="s-val gold">5h 20m</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="s-label">Completion rate</span>
+                    <span class="s-val white">78%</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="s-label">Top priority done</span>
+                    <span class="s-val gold">4 / 5</span>
+                  </div>
+                </div>
+
+                <div class="summary-quote">
+                  <p><em>"Small steps today.<br>Big progress tomorrow."</em></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-footer">
+              <div class="step-number">3</div>
+              <p>Close the day with a clear summary<br>and a sense of accomplishment.</p>
+            </div>
+          </div>
+        </div>
+      
+
+        <!-- Bottom Features -->
+        <div class="bottom-features">
+          <div class="bottom-feature">
+            <span class="feature-icon shield">🛡️</span>
+            <div class="feature-text">
+              <h4>Your data is private</h4>
+              <p>Stored locally. You're in control.</p>
+            </div>
+          </div>
+          <div class="bottom-feature">
+            <span class="feature-icon bolt">⚡</span>
+            <div class="feature-text">
+              <h4>Works offline</h4>
+              <p>Your schedule is always with you.</p>
+            </div>
+          </div>
+          <div class="bottom-feature">
+            <span class="feature-icon device">📱</span>
+            <div class="feature-text">
+              <h4>Any device</h4>
+              <p>Seamless across all your devices.</p>
+            </div>
+          </div>
+          <div class="bottom-feature">
+            <span class="feature-icon check">✓</span>
+            <div class="feature-text">
+              <h4>Built for individuals</h4>
+              <p>Designed for focus, not noise.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats reveal">
+      <div class="stat-item">
+        <div class="stat-num">83%</div>
+        <div class="stat-label">Task completion rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2.4x</div>
+        <div class="stat-label">Focus time increase</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">150+</div>
+        <div class="stat-label">Active users</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4.7</div>
+        <div class="stat-label">Average rating</div>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <section class="pricing reveal" id="pricing">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple, <em>transparent</em> plans</h2>
+
+      <div class="pricing-cards">
+        <div class="price-card">
+          <div class="plan-name">Free</div>
+          <div class="plan-desc">Perfect to get started</div>
+          <div class="plan-price"><sup>$</sup>0<sub>/mo</sub></div>
+          <ul class="plan-features">
+            <li>Up to 5 blocks per day</li>
+            <li>Basic priority levels</li>
+            <li>Email notifications</li>
+            <li>7-day history</li>
+          </ul>
+          <button class="btn-ghost" style="width:100%">Get started</button>
+        </div>
+
+        <div class="price-card featured">
+          <div class="featured-badge">Most Popular</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-desc">For serious schedulers</div>
+          <div class="plan-price"><sup>$</sup>5<sub>/mo</sub></div>
+          <ul class="plan-features">
+            <li>Unlimited blocks</li>
+            <li>Smart notifications</li>
+            <li>Progress insights</li>
+            <li>Recurring blocks</li>
+            <li>90-day history</li>
+          </ul>
+          <button class="btn-primary" style="width:100%">Start free trial →</button>
+        </div>
+
+        <div class="price-card">
+          <div class="plan-name">Team</div>
+          <div class="plan-desc">Built for collaborative teams</div>
+          <div class="plan-price"><sup>$</sup>15<sub>/mo</sub></div>
+          <ul class="plan-features">
+            <li>Everything in Pro</li>
+            <li>Up to 10 members</li>
+            <li>Shared team calendar</li>
+            <li>Admin controls</li>
+            <li>Priority support</li>
+          </ul>
+          <button class="btn-ghost" style="width:100%">Contact sales</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner reveal">
+      <h2>Ready to take control?</h2>
+      <p>Join hundreds of people who've stopped reacting to their day and started owning it.</p>
+      <button class="btn-primary">Get ProHactive — it's free</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 ProHactive. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </body>
 </html>
